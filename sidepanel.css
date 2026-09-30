@@ -1,0 +1,246 @@
+:root {
+  --bg-main: #070d1d;
+  --bg-panel: #0e152b;
+  --bg-panel-2: #111c35;
+  --text-main: #d8e2ff;
+  --text-muted: #8ea1d8;
+  --accent: #7e93ff;
+  --accent-soft: rgba(126, 147, 255, 0.3);
+  --success: #57d7ad;
+  --danger: #ff6c80;
+  --border: rgba(134, 156, 255, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at 20% 0%, #111f44, #070d1d 46%, #060a14 100%);
+  color: var(--text-main);
+  font-family: "Segoe UI", "Trebuchet MS", "Helvetica Neue", sans-serif;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100vh;
+  padding: 12px;
+}
+
+.header {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(17, 28, 55, 0.95), rgba(12, 20, 40, 0.95));
+  box-shadow: 0 10px 20px rgba(4, 7, 18, 0.4);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #f0f4ff;
+}
+
+h2 span {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 1.1px;
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(16, 25, 47, 0.95), rgba(10, 17, 34, 0.95));
+}
+
+.objective-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+}
+
+textarea,
+input,
+select {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(134, 158, 255, 0.35);
+  background: rgba(8, 14, 31, 0.9);
+  color: var(--text-main);
+  padding: 10px;
+  font-size: 12px;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(126, 147, 255, 0.18);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 64px;
+  max-height: 130px;
+}
+
+.keys-input {
+  min-height: 84px;
+  max-height: 160px;
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.secondary-row {
+  grid-template-columns: 1fr 1fr;
+}
+
+button {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 9px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button.primary {
+  background: linear-gradient(120deg, #7e93ff, #88a6ff);
+  color: #081021;
+  box-shadow: 0 6px 14px rgba(89, 111, 224, 0.4);
+}
+
+button.danger {
+  background: rgba(255, 108, 128, 0.12);
+  color: #ffd7dd;
+  border-color: rgba(255, 108, 128, 0.6);
+}
+
+button.secondary {
+  background: rgba(126, 147, 255, 0.12);
+  color: #dce5ff;
+  border-color: rgba(126, 147, 255, 0.45);
+}
+
+.save-btn {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.config-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+h3 {
+  margin: 0;
+  color: #ebf1ff;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.log-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  flex: 1;
+}
+
+.logs {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.logs::-webkit-scrollbar {
+  width: 5px;
+}
+
+.logs::-webkit-scrollbar-thumb {
+  background: rgba(126, 147, 255, 0.4);
+  border-radius: 6px;
+}
+
+.log-entry {
+  margin-bottom: 7px;
+  word-break: break-word;
+}
+
+.log-entry.info {
+  color: #b8cdfd;
+}
+
+.log-entry.error {
+  color: #ffb4bf;
+}
+
+.log-entry.success {
+  color: #98f3cc;
+}
+
+.log-entry.sys {
+  color: #98a9d7;
+}
+
+.timestamp {
+  color: #6f84bb;
+}
+
+@media (max-width: 380px) {
+  .button-row,
+  .secondary-row {
+    grid-template-columns: 1fr;
+  }
+}

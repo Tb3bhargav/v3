@@ -1,0 +1,13 @@
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.next/
+.sixth/
+.work-pdf/
+output/
+tmp/
+.env
+*.log
+

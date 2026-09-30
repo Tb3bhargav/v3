@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comet Agent</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+
+<body>
+  <div class="app-shell">
+    <header class="header">
+      <div class="logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7e93ff" stroke-width="2">
+          <path d="M12 2v20a10 10 0 1 1 0-20z" />
+          <path d="M12 2a10 10 0 1 0 0 20v-20z" fill="#7e93ff" />
+        </svg>
+        <h2>Comet <span>Agent Core</span></h2>
+      </div>
+      <p class="subtitle">TaskGraph Planner, Swarm Tabs, Vision Fallback</p>
+    </header>
+
+    <section class="panel objective-panel">
+      <label for="taskInput">Objective</label>
+      <textarea id="taskInput" placeholder="Example: Buy a Google Pixel 8 at the cheapest price"></textarea>
+      <div class="button-row">
+        <button id="startBtn" class="primary">Run Agent</button>
+        <button id="stopBtn" class="danger">Halt (Ctrl+Shift+X)</button>
+      </div>
+      <div class="button-row secondary-row">
+        <button id="swarmBtn" class="secondary">Swarm Compare (Max 10 Tabs)</button>
+        <button id="testBtn" class="secondary">Test Screenshot</button>
+      </div>
+    </section>
+
+    <section class="panel config-panel">
+      <h3>Provider Routing (BYOK)</h3>
+      <div class="field-grid">
+        <label for="providerSelect">Provider</label>
+        <select id="providerSelect"></select>
+
+        <label for="endpointInput">Endpoint</label>
+        <input id="endpointInput" type="text" placeholder="https://api.groq.com/openai/v1/chat/completions">
+
+        <label for="reasoningModelInput">Reasoning Model</label>
+        <input id="reasoningModelInput" type="text" placeholder="openai/gpt-oss-120b">
+
+        <label for="visionModelInput">Vision Model</label>
+        <input id="visionModelInput" type="text" placeholder="meta-llama/llama-4-scout-17b-16e-instruct">
+
+        <label for="providerOrderInput">Fallback Order</label>
+        <input id="providerOrderInput" type="text" placeholder="groq,openai,local">
+      </div>
+
+      <label for="apiKeysInput">API Keys (one per line)</label>
+      <textarea id="apiKeysInput" class="keys-input" placeholder="Paste BYOK keys here"></textarea>
+
+      <button id="saveConfigBtn" class="primary save-btn">Save Provider Config</button>
+    </section>
+
+    <section class="panel log-panel">
+      <h3>Runtime Log</h3>
+      <div class="logs" id="logContainer">
+        <div class="log-entry sys">[SYSTEM] Agent core initialized.</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+
+</html>

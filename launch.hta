@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>v3 - Launcher</title>
+<HTA:APPLICATION
+  ID="V3Launcher"
+  APPLICATIONNAME="v3 Launcher"
+  SINGLEINSTANCE="yes"
+  WINDOWSTATE="normal"
+  SCROLL="no"
+  CONTEXTMENU="no"
+/>
+<style>
+body{font-family:"Segoe UI",Arial,sans-serif;background:#070d1d;color:#d8e2ff;margin:0;padding:24px;}
+.card{background:#0e152b;border:1px solid #7e93ff;border-radius:12px;padding:20px;max-width:560px;margin:0 auto;}
+h1{margin:0 0 6px;font-size:20px;color:#fff;}
+.sub{color:#8ea1d8;font-size:12px;margin-bottom:16px;}
+button{display:block;width:100%;margin:8px 0;padding:12px;font-size:14px;font-weight:700;border-radius:8px;border:1px solid #7e93ff;cursor:pointer;}
+.primary{background:#7e93ff;color:#081021;}
+.ghost{background:transparent;color:#d8e2ff;}
+.hint{font-size:12px;color:#8ea1d8;margin-top:12px;line-height:1.5;}
+code{background:#080e1f;padding:2px 6px;border-radius:4px;color:#98f3cc;}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>v3 - Comet Beta Autonomous Agent</h1>
+<div class="sub">Easy starter - preview the side panel, then load as unpacked extension.</div>
+<button class="primary" onclick="VBScript:OpenPanel">1 - Preview Side Panel</button>
+<button class="ghost" onclick="VBScript:OpenExtensions">2 - Open Chrome Extensions Page</button>
+<button class="ghost" onclick="VBScript:OpenFolder">3 - Open Project Folder</button>
+<div class="hint">After Step 1, install fully: open <code>chrome://extensions</code> -&gt; Developer mode -&gt; Load unpacked -&gt; select the <code>v3</code> folder.<br>Set API keys in the side panel (BYOK routing).</div>
+</div>
+<script language="VBScript">
+Dim sh, fso
+Set sh = CreateObject("WScript.Shell")
+Set fso = CreateObject("Scripting.FileSystemObject")
+Function GetBase()
+  Dim p
+  p = Unescape(document.location.pathname)
+  If Left(p, 1) = "/" Then p = Mid(p, 2)
+  p = Replace(p, "/", "\")
+  GetBase = fso.GetParentFolderName(p)
+End Function
+Sub OpenPanel()
+  Dim target
+  target = fso.BuildPath(GetBase(), "sidepanel.html")
+  sh.Run Chr(34) & target & Chr(34), 1, False
+End Sub
+Sub OpenExtensions()
+  sh.Run "chrome.exe chrome://extensions", 1, False
+End Sub
+Sub OpenFolder()
+  sh.Run Chr(34) & GetBase() & Chr(34), 1, False
+End Sub
+</script>
+</body>
+</html>

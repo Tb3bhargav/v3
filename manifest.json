@@ -1,0 +1,48 @@
+{
+    "manifest_version": 3,
+    "name": "Comet Beta Autonomous Agent",
+    "version": "3.0.0",
+    "description": "TaskGraph-driven autonomous browser agent with swarm tabs, vision fallback, and BYOK model routing.",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "scripting",
+        "sidePanel",
+        "storage",
+        "commands"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_title": "Open Side Panel"
+    },
+    "side_panel": {
+        "default_path": "sidepanel.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*/*",
+                "http://*/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle",
+            "all_frames": true
+        }
+    ],
+    "commands": {
+        "kill-switch": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+X",
+                "mac": "Command+Shift+X"
+            },
+            "description": "Emergency Kill-Switch to halt agent immediately"
+        }
+    }
+}
